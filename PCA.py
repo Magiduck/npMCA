@@ -15,7 +15,8 @@ class PCA:
         return np.dot(X, self.vecs.T)
 
     def __center_data(self, X):
-        X = X - X.mean(axis=0)
+        mean = np.mean(X, axis=0)
+        X = X - mean
         if self.normalize:
             X /= X.std(axis=0)
         return X
