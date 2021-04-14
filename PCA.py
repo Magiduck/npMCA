@@ -26,7 +26,7 @@ class PCA:
         cov = np.cov(X.T)
 
         # eigenvalues, eigenvectors
-        vals, vecs = np.linalg.eig(cov)
+        vals, vecs = np.linalg.eigh(cov)
 
         # sort eigenvectors
         idxs = vals.argsort()[::-1]
