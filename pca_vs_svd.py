@@ -16,8 +16,10 @@ def flip_signs(A, B):
 
 # load data
 df = pd.read_csv("rna_seq_matrix_selection.tsv", sep="\t")
-# log transform
 X = df.values[:, 1:].astype(float) + 1
+# log transform, due to count data
+X = np.log2(X)
+
 # Assumption: Let the real values data matrix X be of n x p size, where n is the number of samples and p is the number of variables.
 n, p = X.shape
 # Assumption: Let us assume that it is centered, i.e. column means have been subtracted and are now equal to zero.
