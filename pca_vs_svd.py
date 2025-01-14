@@ -16,9 +16,9 @@ def flip_signs(A, B):
 
 # load data
 df = pd.read_csv("rna_seq_matrix_selection.tsv", sep="\t")
-X = df.values[:, 1:].astype(float) + 1
+X = df.values[:, 1:].astype(float)
 # log transform, due to count data
-X = np.log2(X)
+X = np.log2(X + 1)
 
 # Assumption: Let the real values data matrix X be of n x p size, where n is the number of samples and p is the number of variables.
 n, p = X.shape
@@ -27,6 +27,9 @@ X -= np.mean(X, axis=0)
 
 # Optional: consider normalization
 X /= X.std(axis=0)
+
+# Because this example shows a RNA-seq matrix with rows representing the genes and samples on the columns we transpose here
+X = X.T
 
 #############
 # PCA route #
