@@ -14,11 +14,9 @@ def flip_signs(A, B):
     signs = np.sign(A) * np.sign(B)
     return A, B * signs
 
-# load data, Because this example shows a RNA-seq matrix with rows representing the genes and samples on the columns we transpose this matrix after centering and scaling when doing sample QC
-df = pd.read_csv("rna_seq_matrix_selection.tsv", sep="\t")
-X = df.values[:, 1:].astype(float)
-# log transform, due to count data
-X = np.log2(X + 1)
+# load data,
+wine = pd.read_csv("example_data/wine.csv")
+X = wine.values[:,1:12].astype(float)
 
 # Assumption: Let the real values data matrix X be of n x p size, where n is the number of samples and p is the number of variables.
 n, p = X.shape
