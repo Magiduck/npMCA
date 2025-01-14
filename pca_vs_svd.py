@@ -28,9 +28,9 @@ X -= np.mean(X, axis=0)
 # Optional: consider normalization
 X /= X.std(axis=0)
 
-#############
-# PCA route #
-#############
+#######################################################################
+# Dimensionality reduction with PCA through eigen decomposition route #
+#######################################################################
 
 # covariance matrix
 cov = np.cov(X.T)
@@ -43,9 +43,9 @@ vecs = vecs[:, idxs]
 # project (principal components)
 proj = np.dot(X, vecs)
 
-#############
-# SVD route #
-#############
+##############################################################################
+# Dimensionality reduction with PCA through single value decomposition route #
+##############################################################################
 
 # Perform Single Value Decomposition of X, using full_matrices=False ("economy size"/"thin") such that K = min(n, p).
 U, s, Vt = la.svd(X, full_matrices=False)
