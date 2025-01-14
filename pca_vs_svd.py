@@ -14,7 +14,7 @@ def flip_signs(A, B):
     signs = np.sign(A) * np.sign(B)
     return A, B * signs
 
-# load data,
+# load data
 wine = pd.read_csv("example_data/wine.csv")
 X = wine.values[:,1:12].astype(float)
 
