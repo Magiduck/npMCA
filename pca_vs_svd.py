@@ -14,7 +14,7 @@ def flip_signs(A, B):
     signs = np.sign(A) * np.sign(B)
     return A, B * signs
 
-# load data
+# load data, Because this example shows a RNA-seq matrix with rows representing the genes and samples on the columns we transpose this matrix after centering and scaling when doing sample QC
 df = pd.read_csv("rna_seq_matrix_selection.tsv", sep="\t")
 X = df.values[:, 1:].astype(float)
 # log transform, due to count data
@@ -27,9 +27,6 @@ X -= np.mean(X, axis=0)
 
 # Optional: consider normalization
 X /= X.std(axis=0)
-
-# Because this example shows a RNA-seq matrix with rows representing the genes and samples on the columns we transpose here
-X = X.T
 
 #############
 # PCA route #
